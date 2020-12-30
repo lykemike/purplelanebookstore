@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import connect.Connect;
@@ -44,7 +45,7 @@ public class LoginForm extends JFrame {
 		labelPassword = new JLabel("Password: ");
 		
 		txtEmail = new JTextField();
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		
 		loginButton = new JButton("Login");
 	}

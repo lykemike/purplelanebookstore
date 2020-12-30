@@ -40,7 +40,7 @@ public class RegisterForm extends JFrame {
 		
 		txtEmail = new JTextField();
 		txtUsername = new JTextField();
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		
 		registerButton = new JButton("Register");
 	}
