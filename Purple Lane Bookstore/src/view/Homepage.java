@@ -30,7 +30,7 @@ public class Homepage extends JFrame {
 		top = new JPanel();
 		bot = new JPanel(new GridLayout(1,1));
 		
-		header = new JLabel("Purple Lane Bookstore");
+		header = new JLabel("Welcome To Purple Lane Bookstore");
 		
 		loginButton = new JButton("Login");
 		registerButton = new JButton("Register");
