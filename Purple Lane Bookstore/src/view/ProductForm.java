@@ -16,7 +16,7 @@ import javax.swing.table.TableColumnModel;
 
 import connect.Connect;
 
-public class ProductForm extends JFrame{
+public class ProductForm extends View{
 
 	Connect connect = new Connect();
 	JPanel top, mid, bot;
@@ -29,16 +29,13 @@ public class ProductForm extends JFrame{
 	Vector detail, header;
 	
 	public ProductForm() {
-		initialize();
-		addComponent();
-		buttonListener();
-        setSize(500, 700);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
+		super();
+		this.width = 500;
+		this.height = 700;
 	}
-	
-	private void initialize() {
+
+	@Override
+	public void initialize() {
 		top = new JPanel();
 		mid = new JPanel(new GridLayout(5, 2));
 		bot = new JPanel();
@@ -63,9 +60,11 @@ public class ProductForm extends JFrame{
 		deleteButton = new JButton("Delete");
 		
 		loadData(connect.executeQuery("SELECT * FROM products"));
+		
 	}
-	
-	private void addComponent() {
+
+	@Override
+	public void addComponent() {
 		top.add(scrollPane);
 		
 		mid.add(labelId);
@@ -86,9 +85,11 @@ public class ProductForm extends JFrame{
 		add(top, BorderLayout.NORTH);
 		add(mid, BorderLayout.CENTER);
 		add(bot, BorderLayout.SOUTH);
+		
 	}
-	
-	private void buttonListener() {
+
+	@Override
+	public void addListener() {
 		/*
 		 * INSERT NEW PRODUCT
 		 */
@@ -262,12 +263,15 @@ public class ProductForm extends JFrame{
 			e.printStackTrace();
 		}
         DefaultTableModel dtm = new DefaultTableModel(data, header) {
+        	
         	@Override
         	public boolean isCellEditable(int row, int column) {
         		return false;
         	}
         };
         table.setModel(dtm);
+		table.getTableHeader().setReorderingAllowed(false);
+		table.getTableHeader().setResizingAllowed(false);
 	}
 
 }

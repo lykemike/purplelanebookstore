@@ -10,7 +10,7 @@ import javax.swing.*;
 
 import connect.Connect;
 
-public class RegisterForm extends JFrame {
+public class RegisterForm extends View {
 
 	JPanel top, mid, bot;
 	JLabel header, labelEmail, labelUsername, labelPassword;
@@ -19,16 +19,13 @@ public class RegisterForm extends JFrame {
 	Connect connect = new Connect();
 	
 	public RegisterForm() {	
-		initialize();	
-		addComponent();
-		buttonListener();
-		setSize(700, 200);	
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
+		super();
+		this.width = 700;
+		this.height = 200;
 	}
 
-	private void initialize() {
+	@Override
+	public void initialize() {
 		top = new JPanel();
 		mid = new JPanel(new GridLayout(3, 3));
 		bot = new JPanel();	
@@ -43,9 +40,11 @@ public class RegisterForm extends JFrame {
 		txtPassword = new JPasswordField();
 		
 		registerButton = new JButton("Register");
+		
 	}
 
-	private void addComponent() {
+	@Override
+	public void addComponent() {
 		top.add(header);
 		
 		mid.add(labelEmail);
@@ -60,9 +59,11 @@ public class RegisterForm extends JFrame {
 		add(top, BorderLayout.NORTH);
 		add(mid, BorderLayout.CENTER);
 		add(bot, BorderLayout.SOUTH);
+		
 	}
 
-	public void buttonListener() {
+	@Override
+	public void addListener() {
 		registerButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -83,9 +84,11 @@ public class RegisterForm extends JFrame {
 					dispose();
 				} catch (Exception e2) {
 					e2.printStackTrace();
+					}
 				}
-			}
 		});
 	}
-
+	
 }
+
+

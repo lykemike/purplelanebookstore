@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 import connect.Connect;
 
-public class LoginForm extends JFrame {
+public class LoginForm extends View {
 
 	JPanel top, mid, bot;
 	JLabel header, labelEmail, labelPassword;
@@ -26,16 +26,13 @@ public class LoginForm extends JFrame {
 	Connect connect = new Connect();
 	
 	public LoginForm() {
-        initialize();
-        addComponent();
-        buttonListener();
-        setSize(700, 200);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
+		super();
+		this.width = 700;
+		this.height = 200;
 	}
-	
-	private void initialize() {
+
+	@Override
+	public void initialize() {
 		top = new JPanel();
 		mid = new JPanel(new GridLayout(2, 2));
 		bot = new JPanel();
@@ -48,9 +45,11 @@ public class LoginForm extends JFrame {
 		txtPassword = new JPasswordField();
 		
 		loginButton = new JButton("Login");
+		
 	}
-	
-	private void addComponent() {
+
+	@Override
+	public void addComponent() {
 		top.add(header);
 		
 		mid.add(labelEmail);
@@ -63,9 +62,11 @@ public class LoginForm extends JFrame {
 		add(top, BorderLayout.NORTH);
 		add(mid, BorderLayout.CENTER);
 		add(bot, BorderLayout.SOUTH);
+		
 	}
-	
-	private void buttonListener() {
+
+	@Override
+	public void addListener() {
 		loginButton.addActionListener(new ActionListener() {
 			
 			@Override
