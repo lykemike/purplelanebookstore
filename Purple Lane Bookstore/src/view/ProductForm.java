@@ -270,8 +270,7 @@ public class ProductForm extends View{
         	}
         };
         table.setModel(dtm);
-		table.getTableHeader().setReorderingAllowed(false);
-		table.getTableHeader().setResizingAllowed(false);
+        
 	}
 
 }
