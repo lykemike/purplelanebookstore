@@ -4,11 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.PreparedStatement;
-
 import javax.swing.*;
-
 import connect.Connect;
+import controller.UserController;
 
 public class RegisterForm extends View {
 
@@ -71,20 +69,7 @@ public class RegisterForm extends View {
 				String email = txtEmail.getText();
 				String username = txtUsername.getText();
 				String password = txtPassword.getText();
-				
-				String query = String.format("Insert INTO users VALUES(null, ?, ?, ?)");
-				PreparedStatement preparedStatement = connect.prepareStatement(query);
-				try {
-					preparedStatement.setString(1, email);
-					preparedStatement.setString(2, username);
-					preparedStatement.setString(3, password);
-					preparedStatement.executeUpdate();
-					JOptionPane.showMessageDialog(null, "Register Successfull!!");
-					new LoginForm();
-					dispose();
-				} catch (Exception e2) {
-					e2.printStackTrace();
-					}
+				UserController.getInstance().insert(email, username, password);
 				}
 		});
 	}
